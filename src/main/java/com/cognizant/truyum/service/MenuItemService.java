@@ -20,5 +20,11 @@ public class MenuItemService {
 	public MenuItem getMenuItem(Long id) {
 		return menuItemDao.getMenuItem(id);
 	}
+	
+	public String save(MenuItem item) {
+		return menuItemDao.save(item);
+	}
+	
+	
 
 }

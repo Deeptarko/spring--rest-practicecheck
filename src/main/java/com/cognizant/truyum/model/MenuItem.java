@@ -1,34 +1,33 @@
 package com.cognizant.truyum.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class MenuItem {
-	private Long id;
+	private long id;
 	private String name;
 	private float price;
+	private boolean active;
 	private Date dateOfLaunch;
 	private String category;
-	private boolean freeCategory;
+	private boolean freeDelivery;
 
-	public MenuItem() {
-
-	}
-
-	public MenuItem(Long id, String name, float price, Date dateOfLaunch, String category, boolean freeCategory) {
+	public MenuItem(long id, String name, float price, boolean active, Date dateOfLaunch, 
+			String category, boolean freeDelivery) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.price = price;
+		this.active = active;
 		this.dateOfLaunch = dateOfLaunch;
 		this.category = category;
-		this.freeCategory = freeCategory;
+		this.freeDelivery = freeDelivery;
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -48,6 +47,14 @@ public class MenuItem {
 		this.price = price;
 	}
 
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
 	public Date getDateOfLaunch() {
 		return dateOfLaunch;
 	}
@@ -64,11 +71,41 @@ public class MenuItem {
 		this.category = category;
 	}
 
-	public boolean isFreeCategory() {
-		return freeCategory;
+	public boolean isFreeDelivery() {
+		return freeDelivery;
 	}
 
-	public void setFreeCategory(boolean freeCategory) {
-		this.freeCategory = freeCategory;
+	public void setFreeDelivery(boolean freeDelivery) {
+		this.freeDelivery = freeDelivery;
 	}
+
+	@Override
+	public String toString() {
+		return "Id = " + id + "\nName = " + name + "\nPrice = " + price + "\nActive = " + active +
+				"\nDate Of Launch = " + dateOfLaunch + "\nCategory = " + category + 
+				"\nFree Delivery = " + freeDelivery + "\n***************************************";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (id ^ (id >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MenuItem other = (MenuItem) obj;
+		if (id != other.id)
+			return false;
+		return true;
+	}
+
 }
